@@ -22,9 +22,9 @@ function App() {
       setIsLoading(false);
       if (response.status === 401 || response.status === 403) {
         setIsAuthenticated(false);
-      } else if (response.ok) {
-        const items = await response.json() as TodoItem[];
-        setItems(items);
+      } else {
+        const items = await response.json() || [];
+        setItems(items  as TodoItem[]);
         setIsAuthenticated(true);
       }
     }
